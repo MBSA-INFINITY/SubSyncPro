@@ -21,7 +21,7 @@ Subtitle = namedtuple('Subtitle', 'number start end content')
 def extract_subtitles(video_path, output_path):
 
 
-    ccextractor_path = "D://ccextractor//ccextractorwin.exe"  # Replace with the actual path to the CCExtractor binary
+    ccextractor_path = "/home/ubuntu/mbsa/bin/ecowiser/ccextractor/ccextractorwin.exe"  # Replace with the actual path to the CCExtractor binary
 
     # Run CCExtractor command using subprocess
     command = [ccextractor_path, video_path, "-o", output_path]
