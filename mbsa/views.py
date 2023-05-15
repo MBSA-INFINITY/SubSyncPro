@@ -42,7 +42,7 @@ def index(request):
     return render(request, "index.html",{"video_exists" : True,"video_link":f"./static/mbsa.mp4","all_subtitles":[]})
 
 def object_page(request, object_key):
-    status_data = db.child("all_keys").child(object_key).get().val()
+    status_data = db.child("all_keys").child("-"+object_key).get().val()
     if status_data:
         return render(request, "final.html",{"status_data":dict(status_data)})
     else:
