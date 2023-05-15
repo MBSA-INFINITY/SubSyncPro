@@ -28,7 +28,7 @@ def index(request):
             "subtitles": False
         }
         resp = db.child("all_keys").push(data)
-        object_key = resp['name']
+        object_key = resp['name'][1:]
         my_uploaded_file = request.FILES['my_uploaded_file']
         image_upload = TemporaryFile.objects.create(file=my_uploaded_file)
         upload_to_s3.delay(image_upload.id, object_key)
