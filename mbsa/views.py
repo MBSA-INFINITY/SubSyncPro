@@ -28,7 +28,7 @@ def index(request):
             "subtitles": False
         }
         resp = db.child("all_keys").push(data)
-        object_key = resp['name'][1:]
+        object_key = resp['name']
         my_uploaded_file = request.FILES['my_uploaded_file']
         image_upload = TemporaryFile.objects.create(file=my_uploaded_file)
         upload_to_s3.delay(image_upload.id, object_key)
@@ -42,7 +42,7 @@ def index(request):
     return render(request, "index.html",{"video_exists" : True,"video_link":f"./static/mbsa.mp4","all_subtitles":[]})
 
 def object_page(request, object_key):
-    status_data = db.child("all_keys").child("-"+object_key).get().val()
+    status_data = db.child("all_keys").child(object_key).get().val()
     if status_data:
         return render(request, "final.html",{"status_data":dict(status_data)})
     else:
