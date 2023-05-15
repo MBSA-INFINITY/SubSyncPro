@@ -10,7 +10,7 @@ db = boto3.resource(
     service_name='dynamodb',
     aws_access_key_id='AKIAWGU44PD7MGWRXM65',
     aws_secret_access_key="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",
-    region_name='ap-south-1'
+    region_name='us-west-1'
 )
 __TableName__ = "ecowiser"
 table = db.Table(__TableName__)
