@@ -19,12 +19,8 @@ Subtitle = namedtuple('Subtitle', 'number start end content')
 
 
 def extract_subtitles(video_path, output_path):
-
-
-    ccextractor_path = "static//ccextractorwin.exe"  # Replace with the actual path to the CCExtractor binary
-
     # Run CCExtractor command using subprocess
-    command = [ccextractor_path, video_path, "-o", output_path]
+    command = ["ccextractor", video_path, "-o", output_path]
     subprocess.run(command)
 
     # Check if the output subtitle file was created
