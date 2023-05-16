@@ -10,8 +10,8 @@ import random
 
 db = boto3.resource(
     service_name='dynamodb',
-    aws_access_key_id='AKIAWGU44PD7MGWRXM65',
-    aws_secret_access_key="e9egChEdNHmJoYy/40QJo35gyCz3CNg7QZTItzbR",
+    aws_access_key_id='<YOUR AWS ACCESS KEY ID>',
+    aws_secret_access_key="<YOUR AWS SECRET ACCESS KEY>",
     region_name='ap-south-1'
 )
 __TableName__ = "ecowiser"
