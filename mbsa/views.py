@@ -57,5 +57,5 @@ def search(request, object_key):
             messages.success(request, 'Follwing Below are your results!')
         else:
             messages.error(request, 'Oops!! No such subtitles found')
-        return render(request, "search.html",{"subtitles":result})
-    return render(request, "search.html",{"subtitles":[]})
+        return render(request, "search.html",{"subtitles":result,"object_key":object_key})
+    return render(request, "search.html",{"subtitles":[],"object_key":object_key})

@@ -26,7 +26,7 @@
           </video>
        </center>
        <input type="text" id="subtitles" value="{{subtitles}}" style="display: none;">
-        <form action="/search" method="post">
+        <form action="/search/{{object_key}}" method="post">
             <div>
                 {% csrf_token %} 
                 <label for="formFileLg" class="form-label">Search for subtitles</label>
