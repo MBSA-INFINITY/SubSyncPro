@@ -26,7 +26,7 @@ def random_string_generator(N):
 
 def extract_subtitles(video_path, output_path):
     # Run CCExtractor command using subprocess
-    command = ["ccextractor", video_path, "-o", output_path]
+    command = ["/home/ubuntu/mbsa/bin/ccextractor_files/ccextractor-0.88/linux/ccextractor", video_path, "-o", output_path]
     subprocess.run(command)
 
     # Check if the output subtitle file was created
