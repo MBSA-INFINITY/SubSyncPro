@@ -6,22 +6,22 @@ import boto3
 from .helper import *
 
 firebaseConfig = {
-  "apiKey": "<YOUR-API-KEY>",
-  "authDomain": "<YOUR-AUTH-DOMAIN>",
-  "databaseURL": "<YOUR-DATABASEURL>",
-  "projectId": "<YOUR-DATABASEURL>",
-  "storageBucket": "<YOUR-STORAGE-BUCKET>",
-  "messagingSenderId": "<YOUR-MESSAGINNG-ID>",
-  "appId": "<YOUR-APP-ID>",
-  "measurementId": "<YOUR-MEASUREMENT-ID>"
+  "apiKey": "AIzaSyD6vjqgRXjs4cs1OTghrqxcgtG-jdg-OdQ",
+  "authDomain": "fir-flask-app-ba8ce.firebaseapp.com",
+  "databaseURL": "https://fir-flask-app-ba8ce-default-rtdb.firebaseio.com",
+  "projectId": "fir-flask-app-ba8ce",
+  "storageBucket": "fir-flask-app-ba8ce.appspot.com",
+  "messagingSenderId": "741872754982",
+  "appId": "1:741872754982:web:7c51caf1593b8821d7e1e7",
+  "measurementId": "G-EFVXY2L9G6"
 }
 firebase = Firebase(firebaseConfig)
 db = firebase.database()
 
 s3 = boto3.resource(
     service_name='s3',
-    aws_access_key_id='<YOUR AWS ACCESS KEY ID>',
-    aws_secret_access_key="<YOUR AWS SECRET ACCESS KEY>"
+    aws_access_key_id='AKIAWGU44PD7MGWRXM65',
+    aws_secret_access_key="e9egChEdNHmJoYy/40QJo35gyCz3CNg7QZTItzbR"
 )
 S3_BUCKET_NAME = "ecowiser"
 

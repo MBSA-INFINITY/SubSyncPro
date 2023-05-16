@@ -10,8 +10,8 @@ import random
 
 db = boto3.resource(
     service_name='dynamodb',
-    aws_access_key_id='<YOUR AWS ACCESS KEY ID>',
-    aws_secret_access_key="<YOUR AWS SECRET ACCESS KEY>",
+    aws_access_key_id='AKIAWGU44PD7MGWRXM65',
+    aws_secret_access_key="e9egChEdNHmJoYy/40QJo35gyCz3CNg7QZTItzbR",
     region_name='ap-south-1'
 )
 __TableName__ = "ecowiser"
@@ -73,10 +73,10 @@ def upload_sub_to_dynamo(all_subtitles,object_key):
                     "object_key":item["object_key"]
                 })
             
-def search_subtitles(search_query):
+def search_subtitles(search_query, object_key):
     search_query = search_query.lower()
     response = table.scan(
-        FilterExpression=Attr('content').contains(search_query)
+        FilterExpression=Attr('object_key').eq(object_key) & Attr('content').contains(search_query)
   )
     return response['Items']
         

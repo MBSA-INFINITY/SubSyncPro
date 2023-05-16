@@ -7,14 +7,14 @@ from firebase import Firebase
 from django.contrib import messages
 
 firebaseConfig = {
-  "apiKey": "<YOUR-API-KEY>",
-  "authDomain": "<YOUR-AUTH-DOMAIN>",
-  "databaseURL": "<YOUR-DATABASEURL>",
-  "projectId": "<YOUR-DATABASEURL>",
-  "storageBucket": "<YOUR-STORAGE-BUCKET>",
-  "messagingSenderId": "<YOUR-MESSAGINNG-ID>",
-  "appId": "<YOUR-APP-ID>",
-  "measurementId": "<YOUR-MEASUREMENT-ID>"
+  "apiKey": "AIzaSyD6vjqgRXjs4cs1OTghrqxcgtG-jdg-OdQ",
+  "authDomain": "fir-flask-app-ba8ce.firebaseapp.com",
+  "databaseURL": "https://fir-flask-app-ba8ce-default-rtdb.firebaseio.com",
+  "projectId": "fir-flask-app-ba8ce",
+  "storageBucket": "fir-flask-app-ba8ce.appspot.com",
+  "messagingSenderId": "741872754982",
+  "appId": "1:741872754982:web:7c51caf1593b8821d7e1e7",
+  "measurementId": "G-EFVXY2L9G6"
 }
 firebase = Firebase(firebaseConfig)
 db = firebase.database()
@@ -49,10 +49,10 @@ def object_page(request, object_key):
     else:
         return HttpResponse("Invalid Object Key in the URL")
     
-def search(request):
+def search(request, object_key):
     if request.method == 'POST':
         search_query = request.POST.get("query")
-        result = search_subtitles(search_query)
+        result = search_subtitles(search_query, object_key)
         if result:
             messages.success(request, 'Follwing Below are your results!')
         else:
