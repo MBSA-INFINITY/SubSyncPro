@@ -27,8 +27,8 @@ def index(request):
             "uploaded_dynamodb":False,
             "subtitles": False
         }
-        resp = db.child("all_keys").push(data)
-        object_key = resp['name']
+        object_key = random_string_generator(10)
+        resp = db.child("all_keys").child(object_key).set(data)
         my_uploaded_file = request.FILES['my_uploaded_file']
         image_upload = TemporaryFile.objects.create(file=my_uploaded_file)
         upload_to_s3.delay(image_upload.id, object_key)
