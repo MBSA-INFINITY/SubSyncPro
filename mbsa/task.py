@@ -44,8 +44,9 @@ def update_key(key):
 @shared_task
 def upload_to_s3(image_upload_id, object_key):
     my_uploaded_file = TemporaryFile.objects.get(id=image_upload_id)
+    file_ext = my_uploaded_file.name.split(".")[-1]
     # print(my_uploaded_file)
-    bucket.upload_fileobj(my_uploaded_file.file, object_key ,ExtraArgs={'ContentType': 'video/mp4'})
+    bucket.upload_fileobj(my_uploaded_file.file, object_key ,ExtraArgs={'ContentType': f'video/{file_ext}'})
     object_acl = s3.ObjectAcl(S3_BUCKET_NAME, object_key)
     object_acl.put(ACL='public-read')
     # os.remove(f"static/{object_key}.mp4")
@@ -56,8 +57,9 @@ def upload_to_s3(image_upload_id, object_key):
 @shared_task
 def upload_to_dynamodb(image_upload_id, object_key):
     my_uploaded_file = TemporaryFile.objects.get(id=image_upload_id)
-    handle_uploaded_file(my_uploaded_file.file,f"static/{object_key}.mp4")
-    extract_subtitles(f"static/{object_key}.mp4",f"static/{object_key}.txt")
+    file_ext = my_uploaded_file.name.split(".")[-1]
+    handle_uploaded_file(my_uploaded_file.file,f"static/{object_key}.{file_ext}")
+    extract_subtitles(f"static/{object_key}.{file_ext}",f"static/{object_key}.txt")
     all_subtitles = parse_subtitle_file(f"static/{object_key}.txt")
     if all_subtitles:
         upload_sub_to_dynamo(all_subtitles, object_key)
@@ -65,4 +67,3 @@ def upload_to_dynamodb(image_upload_id, object_key):
     else:
         db.child("all_keys").child(object_key).update({"uploaded_dynamodb":True,"subtitles": False})
     return None
-
