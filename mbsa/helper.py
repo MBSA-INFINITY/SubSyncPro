@@ -5,6 +5,8 @@ from itertools import groupby
 from collections import namedtuple
 import boto3
 from boto3.dynamodb.conditions import Attr
+import string
+import random
 
 db = boto3.resource(
     service_name='dynamodb',
@@ -17,6 +19,10 @@ table = db.Table(__TableName__)
 
 Subtitle = namedtuple('Subtitle', 'number start end content')
 
+def random_string_generator(N):
+    res = ''.join(random.choices(string.ascii_uppercase +
+                                string.digits, k=N))
+    return str(res)
 
 def extract_subtitles(video_path, output_path):
     # Run CCExtractor command using subprocess
