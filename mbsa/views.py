@@ -7,15 +7,16 @@ from firebase import Firebase
 from django.contrib import messages
 
 firebaseConfig = {
-  "apiKey": "AIzaSyD6vjqgRXjs4cs1OTghrqxcgtG-jdg-OdQ",
-  "authDomain": "fir-flask-app-ba8ce.firebaseapp.com",
-  "databaseURL": "https://fir-flask-app-ba8ce-default-rtdb.firebaseio.com",
-  "projectId": "fir-flask-app-ba8ce",
-  "storageBucket": "fir-flask-app-ba8ce.appspot.com",
-  "messagingSenderId": "741872754982",
-  "appId": "1:741872754982:web:7c51caf1593b8821d7e1e7",
-  "measurementId": "G-EFVXY2L9G6"
+  "apiKey": "your key",
+  "authDomain": "your key",
+  "databaseURL": "your key",
+  "projectId": "your key",
+  "storageBucket": "your key",
+  "messagingSenderId": "your key",
+  "appId": "your key",
+  "measurementId": "your key"
 }
+
 firebase = Firebase(firebaseConfig)
 db = firebase.database()
 
