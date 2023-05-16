@@ -42,9 +42,8 @@ def update_key(key):
 
 
 @shared_task
-def upload_to_s3(image_upload_id, object_key):
+def upload_to_s3(image_upload_id, object_key,file_ext):
     my_uploaded_file = TemporaryFile.objects.get(id=image_upload_id)
-    file_ext = my_uploaded_file.name.split(".")[-1]
     # print(my_uploaded_file)
     bucket.upload_fileobj(my_uploaded_file.file, object_key ,ExtraArgs={'ContentType': f'video/{file_ext}'})
     object_acl = s3.ObjectAcl(S3_BUCKET_NAME, object_key)
@@ -55,9 +54,8 @@ def upload_to_s3(image_upload_id, object_key):
 
 
 @shared_task
-def upload_to_dynamodb(image_upload_id, object_key):
+def upload_to_dynamodb(image_upload_id, object_key, file_ext):
     my_uploaded_file = TemporaryFile.objects.get(id=image_upload_id)
-    file_ext = my_uploaded_file.name.split(".")[-1]
     handle_uploaded_file(my_uploaded_file.file,f"static/{object_key}.{file_ext}")
     extract_subtitles(f"static/{object_key}.{file_ext}",f"static/{object_key}.txt")
     all_subtitles = parse_subtitle_file(f"static/{object_key}.txt")
