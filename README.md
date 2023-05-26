@@ -48,9 +48,13 @@
    ```shell
    celery -A ecowiser worker -l info -P eventlet
    ```
+8. Build/Download ccextractor:
+   [Latest CCExtarctor Binaries](https://github.com/CCExtractor/ccextractor/releases/tag/v0.89)
+   Download or the build the cceaxtractor module according to your Opertaing System.
    
-8. Run the Django development server:
+9. Run the Django development server:
    ```shell
    python manage.py runserver
    ```
+
 
