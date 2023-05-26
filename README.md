@@ -48,4 +48,9 @@
    ```shell
    celery -A ecowiser worker -l info -P eventlet
    ```
+   
+8. Run the Django development server:
+   ```shell
+   python manage.py runserver
+   ```
 
